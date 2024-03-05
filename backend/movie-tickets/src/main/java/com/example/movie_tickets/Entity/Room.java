@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.List;
+
 @Entity
 @Getter
 @ToString
@@ -17,4 +19,7 @@ public class Room {
 
     @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name="cinema_id")
     private Cinema cinema;
+
+    @OneToMany(mappedBy = "room", fetch = FetchType.LAZY)
+    private List<Schedule> schedules;
 }
