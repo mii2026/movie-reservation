@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Getter
@@ -14,23 +15,27 @@ public class Movie {
     private String movieId;
     private String movieName;
     private String posterUrl;
-    private Integer cumViewers;
     private Float reservRate;
     private LocalDate releaseDate;
+    private Boolean canBook;
+    private Boolean boxOffice = Boolean.FALSE;
 
     @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name="rating_id")
     private MovieRating movieRating;
 
+    @OneToMany(mappedBy = "movie", fetch = FetchType.LAZY)
+    private List<Schedule> schedules;
+
     @Builder
-    private Movie(String movieId, String movieName, String posterUrl, Integer cumViewers,
-                  Float reservRate, LocalDate releaseDate, MovieRating movieRating
+    private Movie(String movieId, String movieName, String posterUrl, Float reservRate,
+                  LocalDate releaseDate, MovieRating movieRating, Boolean canBook
     ){
         this.movieId = movieId;
         this.movieName = movieName;
         this.posterUrl = posterUrl;
-        this.cumViewers = cumViewers;
         this.reservRate = reservRate;
         this.releaseDate = releaseDate;
         this.movieRating = movieRating;
+        this.canBook = canBook;
     }
 }
