@@ -3,6 +3,7 @@ package com.example.movie_tickets.Entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigInteger;
 import java.time.LocalDateTime;
 
 @Entity
@@ -11,7 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Schedule {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long scheduledId;
+    private BigInteger scheduleId;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
 
@@ -22,9 +23,9 @@ public class Schedule {
     private Room room;
 
     @Builder
-    public Schedule(long scheduledId, LocalDateTime startTime, LocalDateTime endTime,
-                    Movie movie, Room room){
-        this.scheduledId = scheduledId;
+    public Schedule(
+            LocalDateTime startTime, LocalDateTime endTime, Movie movie, Room room
+    ){
         this.startTime = startTime;
         this.endTime = endTime;
         this.movie = movie;

@@ -12,7 +12,8 @@ import java.util.List;
 public class MovieRating {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer RatingId;
-    private String Rating;
+    private String name;
+    private Integer age;
 
     @OneToMany(mappedBy = "movieRating", fetch = FetchType.LAZY)
     private List<Movie> movies;

@@ -12,11 +12,11 @@ import java.util.List;
 @Getter
 @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Address {
+public class SeatType {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer addressId;
-    private String  name;
+    private Integer seatId;
+    private Integer cost;
 
-    @OneToMany(mappedBy = "address", fetch = FetchType.LAZY)
-    private List<Cinema> cinemas;
+    @OneToMany(mappedBy = "seatType", fetch = FetchType.LAZY)
+    private List<ReservationSeat> reservationSeats;
 }

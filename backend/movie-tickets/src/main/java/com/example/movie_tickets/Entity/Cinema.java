@@ -12,18 +12,11 @@ import java.util.List;
 public class Cinema {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer cinemaId;
-    private String cinemaName;
+    private String name;
 
     @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name="address_id")
     private Address address;
 
     @OneToMany(mappedBy = "cinema", fetch = FetchType.LAZY)
     private List<Room> rooms;
-
-    @Builder
-    private Cinema(Integer cinemaId, String cinemaName, Address address){
-        this.cinemaId = cinemaId;
-        this.cinemaName = cinemaName;
-        this.address = address;
-    }
 }
