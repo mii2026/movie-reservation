@@ -12,7 +12,9 @@ public class Result {
     private String resultMessage;
     private String resultDescription;
 
-    public static Result SUCCESS(ResultCodeInterface resultCode){
+    public static Result SUCCESS(
+            ResultCodeInterface resultCode
+    ){
         return Result.builder()
                 .resultCode(resultCode.getResultCode())
                 .resultMessage(resultCode.getDescription())
@@ -20,7 +22,9 @@ public class Result {
                 .build();
     }
 
-    public static Result Error(ResultCodeInterface resultCode){
+    public static Result ERROR(
+            ResultCodeInterface resultCode
+    ){
         return Result.builder()
                 .resultCode(resultCode.getResultCode())
                 .resultMessage(resultCode.getDescription())
@@ -28,7 +32,9 @@ public class Result {
                 .build();
     }
 
-    public static Result Error(ResultCodeInterface resultCode, String description){
+    public static Result ERROR(
+            ResultCodeInterface resultCode, String description
+    ){
         return Result.builder()
                 .resultCode(resultCode.getResultCode())
                 .resultMessage(resultCode.getDescription())
