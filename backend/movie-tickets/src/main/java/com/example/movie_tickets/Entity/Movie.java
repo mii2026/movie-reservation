@@ -11,14 +11,13 @@ import java.util.List;
 @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Movie {
-    @Id
-    private String movieId;
-    private String movieName;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long movieId;
+    private String name;
     private String posterUrl;
-    private Float reservRate;
+    private Float reservationRate;
     private LocalDate releaseDate;
     private Boolean canBook;
-    private Boolean boxOffice = Boolean.FALSE;
 
     @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name="rating_id")
     private MovieRating movieRating;
@@ -27,13 +26,13 @@ public class Movie {
     private List<Schedule> schedules;
 
     @Builder
-    private Movie(String movieId, String movieName, String posterUrl, Float reservRate,
-                  LocalDate releaseDate, MovieRating movieRating, Boolean canBook
+    private Movie(
+            String name, String posterUrl, Float reservationRate,
+            LocalDate releaseDate, MovieRating movieRating, Boolean canBook
     ){
-        this.movieId = movieId;
-        this.movieName = movieName;
+        this.name = name;
         this.posterUrl = posterUrl;
-        this.reservRate = reservRate;
+        this.reservationRate = reservationRate;
         this.releaseDate = releaseDate;
         this.movieRating = movieRating;
         this.canBook = canBook;
